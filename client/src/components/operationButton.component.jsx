@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
-const OperationButton = ({operation}) => {
-  return (
-    <button className='w-10 h-10 bg-amber-700 text-white text-center'>
-        {operation}
-    </button>
-  )
-}
+const OperationButton = ({ operation }) => {
+	return (
+		<button className="h-14 grow bg-yellow-600 text-white text-center bg-opacity-90">
+			{operation}
+		</button>
+	);
+};
 
-export default OperationButton
+export default OperationButton;
