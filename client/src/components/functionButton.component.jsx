@@ -1,13 +1,12 @@
 import React from "react";
 
-const FunctionButton = ({ func, changeState }) => {
-	const handleClick = () => {
-		changeState(func);
-	};
+const FunctionButton = ({ func, setCalc }) => {
 	return (
 		<button
 			className=" h-14 bg-orange-900 text-white text-center backdrop-opacity-10"
-			onClick={handleClick}
+			onClick={() => {
+				setCalc = { func };
+			}}
 		>
 			{func}
 		</button>

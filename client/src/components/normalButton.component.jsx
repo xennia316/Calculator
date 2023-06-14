@@ -1,8 +1,11 @@
 import React from "react";
 
-const NormalButton = ({ numberValue, changeState }) => {
+const NormalButton = ({ numberValue, valueArray }) => {
 	const handleClick = () => {
-		changeState(numberValue);
+		let curr = numberValue;
+		valueArray.push(curr);
+
+		console.log("Values: ", valueArray, curr);
 	};
 	return (
 		<button
