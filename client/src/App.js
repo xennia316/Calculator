@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Values from "./static/values.static";
 import {
 	NormalButton,
@@ -8,22 +8,14 @@ import {
 } from "./components";
 
 const App = () => {
-	const valueArray = [];
-	const [calc, setCalc] = useState(valueArray);
+	let valueArray = [];
+	const [calc, setCalc] = useState("");
 
-	useEffect(() => {
-		// const finalArray = [...valueArray];
-		return () => {
-			const finalArray = [...valueArray];
-			finalArray.push(calc);
-			console.log("F", finalArray);
-		};
-	}, [valueArray]);
-
+	const answer = eval(calc);
 	return (
 		<div className="w-screen h-screen flex flex-col items-center justify-center backdrop-blur-30 bg-gray-800 ">
 			<div className="w-[250px] h-[400px] backdrop-opacity-10 opacity-80 border-white border-2 rounded-xl">
-				<Screen answer={10} calculation={valueArray.toString()} />
+				<Screen answer={answer} calculation={calc} />
 				<div className="w-full h-3/4 py-1 inline-grid grid-cols-4 gap-1">
 					{Values.map((item, index) => {
 						if (item.type === "function") {
@@ -31,7 +23,8 @@ const App = () => {
 								<FunctionButton
 									func={item.actValue}
 									key={index}
-									setCalc={setCalc}
+									valueArray={valueArray}
+									setAnswer={setCalc}
 								/>
 							);
 						} else if (item.type === "operation") {
@@ -40,7 +33,7 @@ const App = () => {
 									<OperationButton
 										operation={item.actValue}
 										key={index}
-										setCalc={setCalc}
+										valueArray={valueArray}
 									/>
 									{/* <br /> */}
 								</>
