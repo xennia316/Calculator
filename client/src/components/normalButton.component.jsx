@@ -4,8 +4,7 @@ const NormalButton = ({ numberValue, valueArray }) => {
 	const handleClick = () => {
 		let curr = numberValue;
 		valueArray.push(curr);
-
-		console.log("Values: ", valueArray, curr);
+		console.log("Newly changed", valueArray);
 	};
 	return (
 		<button
