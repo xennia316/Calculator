@@ -18,7 +18,7 @@ const Values = [
 	{ type: "number", actValue: "0" },
 	{ type: "number", actValue: "." },
 	{ type: "function", actValue: "e" },
-	{ type: "operation", actValue: "=" },
+	{ type: "function", actValue: "=" },
 ];
 
 export default Values;
