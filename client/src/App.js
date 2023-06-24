@@ -9,9 +9,10 @@ import {
 
 const App = () => {
 	let valueArray = [];
-	const [calc, setCalc] = useState("");
 
+	const [calc, setCalc] = useState("");
 	const answer = eval(calc);
+
 	return (
 		<div className="w-screen h-screen flex flex-col items-center justify-center backdrop-blur-30 bg-gray-800 ">
 			<div className="w-[250px] h-[400px] backdrop-opacity-10 opacity-80 border-white border-2 rounded-xl">

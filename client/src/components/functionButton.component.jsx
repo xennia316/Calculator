@@ -17,8 +17,10 @@ const FunctionButton = ({ func, valueArray, setAnswer }) => {
 			let pro = valueArray.join("");
 			console.log("Pro", pro, typeof pro);
 			setAnswer(pro);
-		} else if (func === "e" || "%") {
+		} else if (func === "e") {
 			valueArray.push(func);
+		} else if (func === "%") {
+			valueArray.push("/100");
 		}
 	};
 
