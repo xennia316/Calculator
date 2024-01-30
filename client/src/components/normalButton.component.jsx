@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const NormalButton = ({ numberValue, valueArray }) => {
+const NormalButton = ({ numberValue, valueArray, setCalculation }) => {
 	const handleClick = () => {
 		let curr = numberValue;
 		valueArray.push(curr);
-		console.log("Newly changed", valueArray);
+		console.log(valueArray);
 	};
+	// useEffect(() => {
+	// 	setCalculation(valueArray);
+	// }, [handleClick]);
 	return (
 		<button
 			className="grow h-14 bg-orange-900 text-white text-center backdrop-opacity-30 "

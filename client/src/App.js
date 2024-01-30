@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Values from "./static/values.static";
 import {
 	NormalButton,
@@ -10,7 +10,8 @@ import {
 const App = () => {
 	let valueArray = [];
 
-	const [calc, setCalc] = useState("");
+	const [calc, setCalc] = useState(0);
+
 	const answer = eval(calc);
 
 	return (
@@ -35,6 +36,7 @@ const App = () => {
 										operation={item.actValue}
 										key={index}
 										valueArray={valueArray}
+										setCalculation={setCalc}
 									/>
 									{/* <br /> */}
 								</>
@@ -45,6 +47,7 @@ const App = () => {
 									numberValue={item.actValue}
 									key={index}
 									valueArray={valueArray}
+									setCalculation={setCalc}
 									// changeState={changeState}
 								/>
 							);

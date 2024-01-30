@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const OperationButton = ({ operation, valueArray }) => {
+const OperationButton = ({ operation, valueArray, setCalculation }) => {
 	const handleClick = () => {
 		valueArray.push(operation);
-		console.log("Newly changed", valueArray);
+		// setCalculation(valueArray);
 	};
+
+	// useEffect(() => {
+	// 	setCalculation(valueArray);
+	// }, [valueArray]);
+
 	return (
 		<button
 			className="h-14 grow bg-yellow-600 text-white text-center bg-opacity-90"

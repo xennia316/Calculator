@@ -1,27 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const FunctionButton = ({ func, valueArray, setAnswer }) => {
+	// useEffect(() => {
+	// setAnswer(valueArray);
+	// }, [valueArray]);
+
 	const handleClick = () => {
 		if (func === "C") {
 			valueArray.length = 0;
-			console.log("Happening", valueArray);
 		} else if (func === "+/-") {
-			console.log("Shifting here", func);
 			if (valueArray[0] === "-") {
 				valueArray.shift();
 			} else {
 				valueArray.unshift("-");
-				console.log("Shifting here", func);
 			}
 		} else if (func === "=") {
-			let pro = valueArray.join("");
-			console.log("Pro", pro, typeof pro);
-			setAnswer(pro);
+			let lastValue = valueArray[valueArray.length - 1];
+			["/", ".", "+", "-", "*"].includes(lastValue) &&
+				valueArray.pop(lastValue);
+			setAnswer(valueArray.join(""));
+			valueArray.length = 0;
 		} else if (func === "e") {
 			valueArray.push(func);
 		} else if (func === "%") {
 			valueArray.push("/100");
 		}
+		// setAnswer(valueArray);
 	};
 
 	return (
