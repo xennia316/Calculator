@@ -8,11 +8,22 @@ import {
 } from "./components";
 
 const App = () => {
-	let valueArray = [];
-
+	const [valueArray, setValueArray] = useState([]);
 	const [calc, setCalc] = useState(0);
 
-	const answer = eval(calc);
+	const updateState = (newValue) => {
+		if (newValue === "C") {
+			setCalc(0);
+			setValueArray([]);
+		} else {
+			setValueArray((prevArray) => [...prevArray, `${newValue}`]);
+			setCalc((prevCalc) => prevCalc + `${newValue}`);
+		}
+	};
+
+	let evaluator = calc.toString();
+
+	const answer = eval(evaluator);
 
 	return (
 		<div className="w-screen h-screen flex flex-col items-center justify-center backdrop-blur-30 bg-gray-800 ">
@@ -27,6 +38,7 @@ const App = () => {
 									key={index}
 									valueArray={valueArray}
 									setAnswer={setCalc}
+									updateState={updateState}
 								/>
 							);
 						} else if (item.type === "operation") {
@@ -36,7 +48,7 @@ const App = () => {
 										operation={item.actValue}
 										key={index}
 										valueArray={valueArray}
-										setCalculation={setCalc}
+										updateState={updateState}
 									/>
 									{/* <br /> */}
 								</>
@@ -48,7 +60,7 @@ const App = () => {
 									key={index}
 									valueArray={valueArray}
 									setCalculation={setCalc}
-									// changeState={changeState}
+									updateState={updateState}
 								/>
 							);
 						}

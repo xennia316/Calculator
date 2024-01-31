@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 
-const FunctionButton = ({ func, valueArray, setAnswer }) => {
-	// useEffect(() => {
-	// setAnswer(valueArray);
-	// }, [valueArray]);
-
+const FunctionButton = ({ func, valueArray, setAnswer, updateState }) => {
 	const handleClick = () => {
 		if (func === "C") {
 			valueArray.length = 0;
+			updateState("C");
 		} else if (func === "+/-") {
 			if (valueArray[0] === "-") {
 				valueArray.shift();
@@ -19,13 +16,11 @@ const FunctionButton = ({ func, valueArray, setAnswer }) => {
 			["/", ".", "+", "-", "*"].includes(lastValue) &&
 				valueArray.pop(lastValue);
 			setAnswer(valueArray.join(""));
-			valueArray.length = 0;
 		} else if (func === "e") {
-			valueArray.push(func);
+			updateState("e");
 		} else if (func === "%") {
-			valueArray.push("/100");
+			updateState("/100");
 		}
-		// setAnswer(valueArray);
 	};
 
 	return (

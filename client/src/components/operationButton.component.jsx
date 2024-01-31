@@ -1,14 +1,9 @@
 import React, { useEffect } from "react";
 
-const OperationButton = ({ operation, valueArray, setCalculation }) => {
+const OperationButton = ({ operation, valueArray, updateState }) => {
 	const handleClick = () => {
-		valueArray.push(operation);
-		// setCalculation(valueArray);
+		updateState(operation);
 	};
-
-	// useEffect(() => {
-	// 	setCalculation(valueArray);
-	// }, [valueArray]);
 
 	return (
 		<button
