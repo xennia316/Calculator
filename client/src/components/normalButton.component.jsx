@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const NormalButton = ({ numberValue, valueArray, updateState }) => {
+const NormalButton = ({ numberValue, updateState }) => {
 	const handleClick = () => {
 		updateState(numberValue);
 	};
 	return (
 		<button
-			className="grow h-14 bg-orange-900 text-white text-center backdrop-opacity-30 "
+			className="grow h-14 bg-orange-900 text-white text-center backdrop-opacity-30 rounded-md "
 			onClick={handleClick}
 		>
 			{numberValue}

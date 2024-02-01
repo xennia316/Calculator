@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 
-const FunctionButton = ({ func, valueArray, setAnswer, updateState }) => {
+const FunctionButton = ({ func, valueArray, setCalculation, updateState }) => {
 	const handleClick = () => {
 		if (func === "C") {
-			valueArray.length = 0;
 			updateState("C");
 		} else if (func === "+/-") {
 			if (valueArray[0] === "-") {
@@ -15,7 +14,8 @@ const FunctionButton = ({ func, valueArray, setAnswer, updateState }) => {
 			let lastValue = valueArray[valueArray.length - 1];
 			["/", ".", "+", "-", "*"].includes(lastValue) &&
 				valueArray.pop(lastValue);
-			setAnswer(valueArray.join(""));
+			setCalculation(valueArray.join(""));
+			updateState("=");
 		} else if (func === "e") {
 			updateState("e");
 		} else if (func === "%") {
@@ -25,7 +25,7 @@ const FunctionButton = ({ func, valueArray, setAnswer, updateState }) => {
 
 	return (
 		<button
-			className=" h-14 bg-orange-900 text-white text-center backdrop-opacity-10"
+			className=" h-14 bg-orange-900 text-white text-center backdrop-opacity-10 rounded-md "
 			onClick={handleClick}
 		>
 			{func}

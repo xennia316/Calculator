@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Values from "./static/values.static";
 import {
 	NormalButton,
@@ -10,24 +10,24 @@ import {
 const App = () => {
 	const [valueArray, setValueArray] = useState([]);
 	const [calc, setCalc] = useState(0);
-
+	const [answer, setAnswer] = useState(0);
 	const updateState = (newValue) => {
 		if (newValue === "C") {
 			setCalc(0);
 			setValueArray([]);
+			setAnswer(0);
+		} else if (newValue === "=") {
+			let evaluator = calc.toString();
+			setAnswer(eval(evaluator));
 		} else {
 			setValueArray((prevArray) => [...prevArray, `${newValue}`]);
 			setCalc((prevCalc) => prevCalc + `${newValue}`);
 		}
 	};
 
-	let evaluator = calc.toString();
-
-	const answer = eval(evaluator);
-
 	return (
-		<div className="w-screen h-screen flex flex-col items-center justify-center backdrop-blur-30 bg-gray-800 ">
-			<div className="w-[250px] h-[400px] backdrop-opacity-10 opacity-80 border-white border-2 rounded-xl">
+		<div className="w-screen h-screen flex flex-col items-center justify-center backdrop-blur-30 bg-gray-800">
+			<div className="w-[256px] h-[408px] backdrop-opacity-10 opacity-80 border-white border-2 rounded-xl p-1">
 				<Screen answer={answer} calculation={calc} />
 				<div className="w-full h-3/4 py-1 inline-grid grid-cols-4 gap-1">
 					{Values.map((item, index) => {
@@ -37,7 +37,7 @@ const App = () => {
 									func={item.actValue}
 									key={index}
 									valueArray={valueArray}
-									setAnswer={setCalc}
+									setCalculation={setCalc}
 									updateState={updateState}
 								/>
 							);
