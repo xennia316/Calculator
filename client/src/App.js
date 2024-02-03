@@ -17,10 +17,20 @@ const App = () => {
 			setValueArray([]);
 			setAnswer(0);
 		} else if (newValue === "=") {
+			let newArray;
+			typeof valueArray === typeof [] && valueArray[0] == 0
+				? (newArray = valueArray.shift())
+				: (newArray = valueArray);
+			setCalc(newArray.join(""));
 			let evaluator = calc.toString();
 			setAnswer(eval(evaluator));
 		} else {
 			setValueArray((prevArray) => [...prevArray, `${newValue}`]);
+			let newArray;
+			typeof valueArray === typeof [] && valueArray[0] == 0
+				? (newArray = valueArray.shift())
+				: (newArray = valueArray);
+			setCalc(newArray.join(""));
 			setCalc((prevCalc) => prevCalc + `${newValue}`);
 		}
 	};

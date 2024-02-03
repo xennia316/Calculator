@@ -14,7 +14,6 @@ const FunctionButton = ({ func, valueArray, setCalculation, updateState }) => {
 			let lastValue = valueArray[valueArray.length - 1];
 			["/", ".", "+", "-", "*"].includes(lastValue) &&
 				valueArray.pop(lastValue);
-			setCalculation(valueArray.join(""));
 			updateState("=");
 		} else if (func === "e") {
 			updateState("e");
