@@ -6,7 +6,9 @@ const Screen = ({ answer, calculation }) => {
 			<div className="h-1/2 text-2xl text-right">
 				{calculation ? calculation : 0}
 			</div>
-			<div className="h-1/2 text-right font-bold">{answer ? answer : 0}</div>
+			<div className="h-1/2 text-right font-bold">
+				{answer ? answer.toFixed(3) : 0}
+			</div>
 		</div>
 	);
 };
